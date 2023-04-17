@@ -54,28 +54,28 @@ public class Pizza {
     public String getBill(){
         // your code goes here
         int p = this.price;
-        bill = "Base Price of The Pizza: " + p + "\n";
+        this.bill = "Base Price of The Pizza: " + p + "\n";
         if(flagExtraCheese == true){
-            bill = bill + "Extra Cheese Added: " + 80 + "\n";
+            this.bill = this.bill + "Extra Cheese Added: 80\n";
             this.price += 80;
         }
-        int extraTopping = 0;
+
         if(flagExtraToppings == true){
             if(this.isVeg == true){
-                bill = bill + "Extra Toppings Added: " + 70 + "\n";
+                this.bill = this.bill + "Extra Toppings Added: 70\n";
                 this.price += 70;
             }
             else {
-                bill = bill + "Extra Toppings Added: " + 120 + "\n";
+                this.bill = this.bill + "Extra Toppings Added: 120\n";
                 this.price += 120;
             }
         }
         if(flagTakeaway == true){
-            bill = bill + "Paperbag Added: " + 20 + "\n";
+            this.bill = this.bill + "Paperbag Added: \n";
             this.price += 20;
         }
 
-        bill = bill + "Total Price: " + this.price + "\n";
+        this.bill = this.bill + "Total Price: " + this.price + "\n";
         return this.bill;
     }
 }
