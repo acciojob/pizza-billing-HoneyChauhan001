@@ -9,11 +9,12 @@ public class Pizza {
     private int vegBasePrice = 300;
     private int nonVegBasePrices = 400;
     private boolean isCheeseAdded;
-    private int cheesePrice = 80;
     private boolean isExtraToppings;
+    private boolean isTakeaway;
+    private BillGenerator billGenerator;
+    private int cheesePrice = 80;
     private int vegExtraToppingsPrices = 70;
     private int nonVegExtraToppingsPrices = 120;
-    private boolean isTakeaway;
     private int takeawayPrice = 20;
 
     private int toppingsPrice;
@@ -25,9 +26,10 @@ public class Pizza {
         isCheeseAdded = false;
         isExtraToppings = false;
         isTakeaway = false;
+        this.billGenerator = new BillGeneratorImp();
     }
 
-    private int getBasePrice(){
+    public int getBasePrice(){
         return isVeg ? vegBasePrice : nonVegBasePrices;
     }
 
@@ -57,21 +59,54 @@ public class Pizza {
         }
     }
 
+    public Boolean getVeg() {
+        return isVeg;
+    }
+
+    public int getVegBasePrice() {
+        return vegBasePrice;
+    }
+
+    public int getNonVegBasePrices() {
+        return nonVegBasePrices;
+    }
+
+    public boolean isCheeseAdded() {
+        return isCheeseAdded;
+    }
+
+    public int getCheesePrice() {
+        return cheesePrice;
+    }
+
+    public boolean isExtraToppings() {
+        return isExtraToppings;
+    }
+
+    public int getVegExtraToppingsPrices() {
+        return vegExtraToppingsPrices;
+    }
+
+    public int getNonVegExtraToppingsPrices() {
+        return nonVegExtraToppingsPrices;
+    }
+
+    public boolean isTakeaway() {
+        return isTakeaway;
+    }
+
+    public int getTakeawayPrice() {
+        return takeawayPrice;
+    }
+
+    public int getToppingsPrice() {
+        return toppingsPrice;
+    }
+
     public String getBill(){
         // your code goes here
-        String var = "";
-        var += "Base Price Of The Pizza: " + basePrice + "\n";
-        if(isCheeseAdded){
-            var += "Extra Cheese Added: " + cheesePrice + "\n";
-        }
-        if(isExtraToppings){
-            var += "Extra Toppings Added: " + toppingsPrice + "\n";
-        }
-        if(isTakeaway){
-            var += "Paperbag Added: " + takeawayPrice + "\n";
-        }
-        var += "Total Price: " + price + "\n";
-        this.bill = var;
+        String bill = billGenerator.getBill(this);
+        this.bill = bill;
         return this.bill;
     }
 }
